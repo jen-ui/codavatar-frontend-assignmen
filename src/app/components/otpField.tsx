@@ -42,7 +42,6 @@ const OTPFields = () => {
   // OTP sent to the user (simulated for this example)
   const sentOtp = "123456";
   const [resendFlag, setResendFlag] = useState(false);
-  const [clickVerify, setClickVerify] = useState(false);
 
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [timer, setTimer] = useState(60);
@@ -60,7 +59,7 @@ const OTPFields = () => {
    * @param otp- otp submitted
    */
   const onSubmit = (otp: String) => {
-    setClickVerify(true);
+ 
     let verification = sentOtp === otp ? true : false;
 
     if (verification) {
@@ -100,7 +99,7 @@ const OTPFields = () => {
       setTimer((prevTimer) => {
         const newTimer = prevTimer > 0 ? prevTimer - 1 : 0;
 
-        if (newTimer === 0 || clickVerify) {
+        if (newTimer === 0 ) {
           clearInterval(interval); // Clear the interval when the timer reaches 0
           setResendFlag(true); // Enable the resend flag
         }
@@ -146,7 +145,7 @@ const OTPFields = () => {
     startTimer();
     otpInputs.current[0]?.focus();
     setResendFlag(false);
-    setClickVerify(false);
+   
   };
 
   return (
