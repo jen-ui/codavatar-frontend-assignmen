@@ -142,7 +142,7 @@ const OTPFields = () => {
    */
   const handleResend = () => {
     setOtp(["", "", "", "", "", ""]);
-    setTimer(5);
+    setTimer(60);
     startTimer();
     otpInputs.current[0]?.focus();
     setResendFlag(false);
